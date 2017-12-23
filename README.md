@@ -6,7 +6,8 @@ This program deals with parallel programming in Python.
 
 ![Overview](/img/overview.jpg)
 
-## 1 Hardware 
+## 1 Hardware
+
 ### 1.1 Equipments
 
 What you will need:
@@ -54,7 +55,45 @@ The purpose of the protection resistor is to protect the GPIO pin if it is accid
 
 ## 2 Software
 
-TODO
+### 2.1 Dependencies
+
+* python 2.7
+* python-serial
+
+### 2.2 Installation
+
+To launch the application on startup: 
+
+* copy the file `app.py` to the directory `/home/pi/`
+* create a file `raspberry-pi-gps-logger.service` to the directory `/lib/systemd/system/`
+* run the following command lines: `systemctl start raspberry-pi-gps-logger` and `systemctl enable raspberry-pi-gps-logger`
+
+File `raspberry-pi-gps-logger.service`:
+```
+[Unit]
+Description=Data recorder
+After=multi-user.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python /home/pi/app.py
+
+[Install]
+WantedBy=multi-user.target
+```
+
+### 2.3 Usage
+
+* when starting the program the LED flashes fast, the program waiting for an action on the push button.
+* a short press on the push button:
+* * triggers the recording of NMEA frames, the LED remains on
+* * or pauses the recording, the LED flashes slowly
+* a long press on the push button stops the program
+* to restart the program you must restart the raspberry pi
+
+To view the recorded data, you need to convert the `.nmea` to `.gpx`  
+You can use the following command:  
+`gpsbabel -i nmea -f file-in.nmea -o gpx -F file-out.gpx`
 
 ## Acknowledgements
 Based on [martinohanlon/pelmetcam/pelmetcam.py](https://github.com/martinohanlon/pelmetcam/blob/master/pelmetcam.py). 

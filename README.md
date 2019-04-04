@@ -57,7 +57,7 @@ The purpose of the protection resistor is to protect the GPIO pin if it is accid
 
 ## 2.1 The detail of the design
 
-![Flowchart](/img/flowchart.png)
+<img src="/img/flowchart.png" alt="Flowchart" width="500"/>  
 
 ### 2.2 Dependencies
 

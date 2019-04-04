@@ -55,12 +55,16 @@ The purpose of the protection resistor is to protect the GPIO pin if it is accid
 
 ## 2 Software
 
-### 2.1 Dependencies
+## 2.1 The detail of the design
+
+![Flowchart](/img/flowchart.png)
+
+### 2.2 Dependencies
 
 * python 2.7
 * python-serial
 
-### 2.2 Installation
+### 2.3 Installation
 
 To launch the application on startup: 
 
@@ -82,7 +86,7 @@ ExecStart=/usr/bin/python /home/pi/app.py
 WantedBy=multi-user.target
 ```
 
-### 2.3 Usage
+### 2.4 Usage
 
 * when starting the program the LED flashes fast, the program waiting for an action on the push button.
 * a short press on the push button:

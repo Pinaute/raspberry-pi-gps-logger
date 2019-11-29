@@ -5,6 +5,7 @@ I made the choice of a minimalist interface with a red led and a push button.
 This program deals with parallel programming in Python.  
 
 ![Overview](/img/overview.jpg)
+_Overview_
 
 ## 1 Hardware
 
@@ -24,6 +25,7 @@ R2            | resistor     | 1 kohm
 R3            | resistor     | 330 ohm
 
 ![Knolling](/img/knolling.jpg)
+_Knolling_
 
 ### 1.2 Wiring the GPS to the RPI
 
@@ -33,6 +35,7 @@ You have to be careful about RX and TX connections:
 * connect the RX pin of the GPS to the TX pin of the RPI.
 
 ![Wiring](/img/wiring.png)
+_Wiring_
 
 ### 1.3 Overview of the electronic schema
 
@@ -52,12 +55,21 @@ The GPIO 4 pin can be initialized in the program as an output or as an input.
 The purpose of the protection resistor is to protect the GPIO pin if it is accidentally set as an output rather than as an input.  
 
 ![Schema](/img/schema.jpg)
+_Schema_
 
 ## 2 Software
 
 ### 2.1 The detail of the design
 
+* when the program starts, the LED flashes quickly, the program waits for the push button to be pressed.
+* a short press on the push button:
+  * triggers the recording of NMEA frames, the diode remains lit
+  * or pauses recording, the LED flashes slowly
+* a long press on the push button stops the program
+* to restart the program, you must restart the Raspberry pi
+
 <img src="/img/flowchart.png" alt="Flowchart" width="500"/>  
+_Flowchart_
 
 ### 2.2 Dependencies
 
@@ -86,14 +98,7 @@ ExecStart=/usr/bin/python /home/pi/app.py
 WantedBy=multi-user.target
 ```
 
-### 2.4 Usage
-
-* when starting the program the LED flashes fast, the program waiting for an action on the push button.
-* a short press on the push button:
-* * triggers the recording of NMEA frames, the LED remains on
-* * or pauses the recording, the LED flashes slowly
-* a long press on the push button stops the program
-* to restart the program you must restart the raspberry pi
+### Data post-processing
 
 To view the recorded data, you need to convert the `.nmea` to `.gpx`  
 You can use the following command:  

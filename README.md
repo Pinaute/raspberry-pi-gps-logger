@@ -4,7 +4,7 @@ The objective of this project is to record raw NMEA frames from a GPS receive ca
 I made the choice of a minimalist interface with a red led and a push button.  
 This program deals with parallel programming in Python.  
 
-![Overview](/img/overview.jpg)
+![Overview](/img/overview.jpg)  
 _Overview_
 
 ## 1 Hardware
@@ -24,7 +24,7 @@ R1            | resistor     | 10 kohm
 R2            | resistor     | 1 kohm
 R3            | resistor     | 330 ohm
 
-![Knolling](/img/knolling.jpg)
+![Knolling](/img/knolling.jpg)  
 _Knolling_
 
 ### 1.2 Wiring the GPS to the RPI
@@ -34,7 +34,7 @@ You have to be careful about RX and TX connections:
 * connect the TX pin of the GPS to the RX pin of the RPI.
 * connect the RX pin of the GPS to the TX pin of the RPI.
 
-![Wiring](/img/wiring.png)
+![Wiring](/img/wiring.png)  
 _Wiring_
 
 ### 1.3 Overview of the electronic schema
@@ -54,7 +54,7 @@ When the button is pressed, the capacitor discharges in a controlled manner and 
 The GPIO 4 pin can be initialized in the program as an output or as an input.  
 The purpose of the protection resistor is to protect the GPIO pin if it is accidentally set as an output rather than as an input.  
 
-![Schema](/img/schema.jpg)
+![Schema](/img/schema.jpg)  
 _Schema_
 
 ## 2 Software
